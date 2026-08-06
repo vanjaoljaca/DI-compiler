@@ -10,7 +10,7 @@ test("Preserves type-only imports. #1", "*", (_, {typescript, useProgram}) => {
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -35,7 +35,7 @@ test("Preserves type-only imports. #1", "*", (_, {typescript, useProgram}) => {
 		formatCode(file.text),
 		formatCode(`\
       import Foo from "./foo";
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
       const container = new DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
 			`)
@@ -49,7 +49,7 @@ test("Preserves type-only imports. #2", "*", (_, {typescript, useProgram}) => {
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -74,7 +74,7 @@ test("Preserves type-only imports. #2", "*", (_, {typescript, useProgram}) => {
 		formatCode(file.text),
 		formatCode(`\
       import {Foo} from "./foo";
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
       const container = new DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
 			`)
@@ -88,7 +88,7 @@ test("Preserves type-only imports. #3", "*", (_, {typescript, useProgram}) => {
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import * as Foo from "./foo";
 				import {IFoo} from "./foo";
 				
@@ -114,7 +114,7 @@ test("Preserves type-only imports. #3", "*", (_, {typescript, useProgram}) => {
 		formatCode(file.text),
 		formatCode(`\
       import * as Foo from "./foo";
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
       const container = new DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
 			`)
@@ -128,7 +128,7 @@ test("Preserves type-only imports. #4", "*", (_, {typescript, useProgram}) => {
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Bar as Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -153,7 +153,7 @@ test("Preserves type-only imports. #4", "*", (_, {typescript, useProgram}) => {
 		formatCode(file.text),
 		formatCode(`\
       import {Bar as Foo} from "./foo";
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
       const container = new DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
 			`)
@@ -167,7 +167,7 @@ test("Preserves type-only imports. #5", "*", (_, {typescript, useProgram}) => {
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {default as Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -192,7 +192,7 @@ test("Preserves type-only imports. #5", "*", (_, {typescript, useProgram}) => {
 		formatCode(file.text),
 		formatCode(`\
       import {default as Foo} from "./foo";
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
       const container = new DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
 			`)
@@ -206,7 +206,7 @@ test("Preserves type-only imports. #6", "*", (_, {typescript, useProgram}) => {
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Foo, Bar, IFoo} from "./foo";
 				console.log(Bar);
 				
@@ -233,7 +233,7 @@ test("Preserves type-only imports. #6", "*", (_, {typescript, useProgram}) => {
 		formatCode(file.text),
 		formatCode(`\
       	import {Foo} from "./foo";
-		import {DIContainer} from "@wessberg/di";
+		import {DIContainer} from "@vanjaoljaca/di";
 		import {Bar} from "./foo";
 		console.log(Bar);
     	const container = new DIContainer();
@@ -249,7 +249,7 @@ test("Preserves type-only imports when the 'preserveValueImports' CompilerOption
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Foo, Bar, IFoo} from "./foo";
 				console.log(Bar);
 				
@@ -281,7 +281,7 @@ test("Preserves type-only imports when the 'preserveValueImports' CompilerOption
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-		import { DIContainer } from "@wessberg/di";
+		import { DIContainer } from "@vanjaoljaca/di";
 		import { Foo, Bar } from "./foo";
 		console.log(Bar);
 		const container = new DIContainer();
@@ -297,7 +297,7 @@ test("Won't lead to duplicate imports. #1", "*", (_, {typescript, useProgram}) =
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				console.log(Foo);
 				
@@ -322,7 +322,7 @@ test("Won't lead to duplicate imports. #1", "*", (_, {typescript, useProgram}) =
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
       import Foo from "./foo";
       console.log(Foo);
       const container = new DIContainer();

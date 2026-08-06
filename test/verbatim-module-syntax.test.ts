@@ -6,7 +6,7 @@ import assert from "node:assert";
 
 test("Relevant type-only imports for DIContainer are preserved, but replaced, under verbatim module syntax. #1", ">3.7", (_, {typescript}) => {
 	const {code} = generateTransformResult(
-		`import {DIContainer} from "@wessberg/di";
+		`import {DIContainer} from "@vanjaoljaca/di";
 		import type {IFoo} from "./foo";
 		
 		const container = new DIContainer();
@@ -23,7 +23,7 @@ test("Relevant type-only imports for DIContainer are preserved, but replaced, un
 	assert.deepEqual(
 		formatCode(code),
 		formatCode(`\
-		import { DIContainer } from "@wessberg/di";
+		import { DIContainer } from "@vanjaoljaca/di";
 		import type { IFoo } from "./foo";
 		const container = new DIContainer();
 		container.get<IFoo>({ identifier: "IFoo" });
@@ -38,7 +38,7 @@ test("Relevant type-only imports for DIContainer are preserved, but replaced, un
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import type {IFoo, Foo} from "./foo";
 				
 				const container = new DIContainer();
@@ -71,7 +71,7 @@ test("Relevant type-only imports for DIContainer are preserved, but replaced, un
 		formatCode(file.text),
 		formatCode(`\
 			import { Foo } from "./foo";
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			const container = new DIContainer();
 			container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
 			`)

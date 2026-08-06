@@ -11,7 +11,7 @@ test("AMD => Preserves Type-only imports. #1", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				console.log(Foo);
 				
@@ -42,7 +42,7 @@ test("AMD => Preserves Type-only imports. #1", "*", (_, {typescript, useProgram}
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-			define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1, foo_1) {
+			define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1, foo_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
@@ -61,7 +61,7 @@ test("AMD => Preserves type-only imports. #2", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -91,7 +91,7 @@ test("AMD => Preserves type-only imports. #2", "*", (_, {typescript, useProgram}
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-      define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
@@ -109,7 +109,7 @@ test("AMD => Preserves type-only imports. #3", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -139,7 +139,7 @@ test("AMD => Preserves type-only imports. #3", "*", (_, {typescript, useProgram}
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-      define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
@@ -157,7 +157,7 @@ test("AMD => Preserves type-only imports. #4", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import * as Foo from "./foo";
 				import {IFoo} from "./foo";
 				
@@ -188,7 +188,7 @@ test("AMD => Preserves type-only imports. #4", "*", (_, {typescript, useProgram}
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-      define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
@@ -206,7 +206,7 @@ test("AMD => Preserves type-only imports. #5", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Bar as Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -236,7 +236,7 @@ test("AMD => Preserves type-only imports. #5", "*", (_, {typescript, useProgram}
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-      define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
@@ -254,7 +254,7 @@ test("AMD => Preserves type-only imports. #6", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {default as Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -284,7 +284,7 @@ test("AMD => Preserves type-only imports. #6", "*", (_, {typescript, useProgram}
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-      define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
@@ -302,7 +302,7 @@ test("AMD => Preserves type-only imports. #7", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Foo, Bar, IFoo} from "./foo";
 				console.log(Bar);
 				
@@ -334,7 +334,7 @@ test("AMD => Preserves type-only imports. #7", "*", (_, {typescript, useProgram}
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-      define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1, foo_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1, foo_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
@@ -353,7 +353,7 @@ test("AMD => Preserves type-only imports when 'preserveValueImports' is true. #1
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Foo, Bar, IFoo} from "./foo";
 				console.log(Bar);
 				
@@ -386,7 +386,7 @@ test("AMD => Preserves type-only imports when 'preserveValueImports' is true. #1
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-      define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1, foo_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1, foo_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
@@ -405,7 +405,7 @@ test("AMD => Preserves type-only imports with esModuleInterop and importHelpers.
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -437,7 +437,7 @@ test("AMD => Preserves type-only imports with esModuleInterop and importHelpers.
 	assert.deepEqual(
 		formatCode(file.text),
 		formatCode(`\
-      define(["require", "exports", "@wessberg/di", "./foo", "tslib"], function (require, exports, di_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo", "tslib"], function (require, exports, di_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("tslib").__importDefault(require("./foo"));
@@ -455,7 +455,7 @@ test("AMD => Preserves type-only imports with esModuleInterop. #1", "*", (_, {ty
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -487,7 +487,7 @@ test("AMD => Preserves type-only imports with esModuleInterop. #1", "*", (_, {ty
 		formatCode(file.text),
 		formatCode(`\
       ${includeEmitHelper(typescript, "__importDefault")}
-      define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = __importDefault(require("./foo"));
@@ -505,7 +505,7 @@ test("AMD => Preserves type-only imports with esModuleInterop. #2", "*", (_, {ty
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				console.log(Foo);
 				
@@ -538,7 +538,7 @@ test("AMD => Preserves type-only imports with esModuleInterop. #2", "*", (_, {ty
 		formatCode(file.text),
 		formatCode(`\
       ${includeEmitHelper(typescript, "__importDefault")}
-      define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1, foo_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1, foo_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = __importDefault(require("./foo"));
@@ -558,7 +558,7 @@ test("AMD => Preserves type-only imports with esModuleInterop. #3", "*", (_, {ty
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import * as Foo from "./foo";
 				import {IFoo} from "./foo";
 				
@@ -591,7 +591,7 @@ test("AMD => Preserves type-only imports with esModuleInterop. #3", "*", (_, {ty
 		formatCode(file.text),
 		formatCode(`\
       ${includeEmitHelper(typescript, "__importStar")}
-      define(["require", "exports", "@wessberg/di", "./foo"], function (require, exports, di_1) {
+      define(["require", "exports", "@vanjaoljaca/di", "./foo"], function (require, exports, di_1) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = __importStar(require("./foo"));

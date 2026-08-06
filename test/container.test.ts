@@ -50,7 +50,7 @@ test("Supports ElementAccessExpressions. #1", "*", (_, {typescript, useProgram})
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				class Foo {}
 				const container = new DIContainer();
 
@@ -65,7 +65,7 @@ test("Supports ElementAccessExpressions. #1", "*", (_, {typescript, useProgram})
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			class Foo {
 			}
 			const container = new DIContainer();
@@ -81,7 +81,7 @@ test("Supports ElementAccessExpressions when an identifier is passed. #1", "*", 
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				class Foo {}
 				const container = new DIContainer();
 
@@ -96,7 +96,7 @@ test("Supports ElementAccessExpressions when an identifier is passed. #1", "*", 
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			class Foo {
 			}
 			const container = new DIContainer();
@@ -112,7 +112,7 @@ test("Supports ElementAccessExpressions. #2", "*", (_, {typescript, useProgram})
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				class Foo {}
 				const container = new DIContainer();
 				const argumentExpression = "registerSingleton";
@@ -128,7 +128,7 @@ test("Supports ElementAccessExpressions. #2", "*", (_, {typescript, useProgram})
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			class Foo {
 			}
 			const container = new DIContainer();
@@ -145,7 +145,7 @@ test("Supports ElementAccessExpressions when an identifier is passed. #2", "*", 
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				class Foo {}
 				const container = new DIContainer();
 				const argumentExpression = "registerSingleton";
@@ -161,7 +161,7 @@ test("Supports ElementAccessExpressions when an identifier is passed. #2", "*", 
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			class Foo {
 			}
 			const container = new DIContainer();
@@ -178,7 +178,7 @@ test("Supports PropertyAccessExpressions. #1", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				interface IFoo {}
 				
@@ -196,7 +196,7 @@ test("Supports PropertyAccessExpressions. #1", "*", (_, {typescript, useProgram}
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			class Foo {
 			}
 			const container = new DIContainer();
@@ -212,7 +212,7 @@ test("Supports PropertyAccessExpressions when an identifier is passed. #1", "*",
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				interface IFoo {}
 				
@@ -230,7 +230,7 @@ test("Supports PropertyAccessExpressions when an identifier is passed. #1", "*",
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			class Foo {
 			}
 			const container = new DIContainer();
@@ -246,7 +246,7 @@ test("Supports PropertyAccessExpressions. #2", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				interface IFoo {}
 				
@@ -264,7 +264,7 @@ test("Supports PropertyAccessExpressions. #2", "*", (_, {typescript, useProgram}
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			class Foo {
 			}
 			const container = new DIContainer();
@@ -280,7 +280,7 @@ test("Won't include imports multiple times when the same implementation is regis
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {IFoo, Foo} from "./foo";
 				
 				const container = new DIContainer();
@@ -305,7 +305,7 @@ test("Won't include imports multiple times when the same implementation is regis
 		formatCode(file.text),
 		formatCode(`\
 			import { Foo } from "./foo";
-      import { DIContainer } from "@wessberg/di";
+      import { DIContainer } from "@vanjaoljaca/di";
       const container = new DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
@@ -320,7 +320,7 @@ test("Supports custom implementation functions. #1", "*", (_, {typescript, usePr
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				interface IFoo {
 					foo: string;
@@ -338,7 +338,7 @@ test("Supports custom implementation functions. #1", "*", (_, {typescript, usePr
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			const container = new DIContainer();
 			container.registerSingleton(() => ({foo: "hello"}), { identifier: \`IFoo\` });
 			`)
@@ -352,7 +352,7 @@ test("Supports custom implementation functions. #2", "*", (_, {typescript, usePr
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				interface Foo {
 
@@ -374,7 +374,7 @@ test("Supports custom implementation functions. #2", "*", (_, {typescript, usePr
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			function foo(options) {
 				return {};
 			}
@@ -391,7 +391,7 @@ test("Supports custom implementation functions. #3", "*", (_, {typescript, usePr
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				interface Foo {
 
@@ -413,7 +413,7 @@ test("Supports custom implementation functions. #3", "*", (_, {typescript, usePr
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			function foo(options) {
 				return {};
 			}
@@ -430,7 +430,7 @@ test("When registering a service, the implementation type argument is treated as
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				class Foo {}
 				
@@ -446,7 +446,7 @@ test("When registering a service, the implementation type argument is treated as
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			class Foo {
 			}
 			const container = new DIContainer();
@@ -462,7 +462,7 @@ test("When registering a service, the type arguments should be irrelevant. #1", 
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				interface IFoo<T> {}
 				class Foo<T> {}
@@ -479,7 +479,7 @@ test("When registering a service, the type arguments should be irrelevant. #1", 
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			class Foo {
 			}
 			const container = new DIContainer();
@@ -495,7 +495,7 @@ test("When registering a service, the type arguments should be irrelevant. #2", 
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				interface IFoo<T> {}
 				class Foo<T> {}
@@ -512,7 +512,7 @@ test("When registering a service, the type arguments should be irrelevant. #2", 
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
 			class Foo {
 			}
 			const container = new DIContainer();
@@ -528,7 +528,7 @@ test("When registering a service, the type arguments should be irrelevant. #3", 
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				interface IFoo<T> {
 				  foo: {bar: T};
@@ -549,7 +549,7 @@ test("When registering a service, the type arguments should be irrelevant. #3", 
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
       class Foo {${semver.gte(typescript.version, "4.3.0") ? "\n\t\tbar" : ""}
       }
       const container = new DIContainer();
@@ -565,7 +565,7 @@ test("When registering a service, the type argument can be a PropertyAccessTypeN
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				const container = new DIContainer();
 				container.registerSingleton<Intl.RelativeTimeFormat, Intl.RelativeTimeFormat>();
@@ -579,7 +579,7 @@ test("When registering a service, the type argument can be a PropertyAccessTypeN
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
       const container = new DIContainer();
       container.registerSingleton(undefined, { identifier: \`Intl.RelativeTimeFormat\`, implementation: Intl.RelativeTimeFormat });
 			`)
@@ -593,7 +593,7 @@ test("When registering a service, the type argument can be a TypeQueryNode. #1",
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				
 				const container = new DIContainer();
 				container.registerSingleton<typeof foo, {}>();
@@ -607,7 +607,7 @@ test("When registering a service, the type argument can be a TypeQueryNode. #1",
 	assert.deepEqual(
 		formatCode(file!.text),
 		formatCode(`\
-			import { DIContainer } from "@wessberg/di";
+			import { DIContainer } from "@vanjaoljaca/di";
       const container = new DIContainer();
       container.registerSingleton(undefined, { identifier: \`typeof foo\`, implementation: {} });
 			`)

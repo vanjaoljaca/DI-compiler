@@ -11,7 +11,7 @@ test("UMD => Preserves Type-only imports. #1", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				console.log(Foo);
 				
@@ -48,13 +48,13 @@ test("UMD => Preserves Type-only imports. #1", "*", (_, {typescript, useProgram}
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const foo_1 = require("./foo");
           console.log(foo_1.default);
           const container = new di_1.DIContainer();
@@ -72,7 +72,7 @@ test("UMD => Preserves type-only imports. #2", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -108,13 +108,13 @@ test("UMD => Preserves type-only imports. #2", "*", (_, {typescript, useProgram}
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const container = new di_1.DIContainer();
           container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.default });
       });
@@ -129,7 +129,7 @@ test("UMD => Preserves type-only imports. #3", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -165,13 +165,13 @@ test("UMD => Preserves type-only imports. #3", "*", (_, {typescript, useProgram}
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const container = new di_1.DIContainer();
           container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.Foo });
       });
@@ -186,7 +186,7 @@ test("UMD => Preserves type-only imports. #4", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import * as Foo from "./foo";
 				import {IFoo} from "./foo";
 				
@@ -223,13 +223,13 @@ test("UMD => Preserves type-only imports. #4", "*", (_, {typescript, useProgram}
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const container = new di_1.DIContainer();
           container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
       });
@@ -244,7 +244,7 @@ test("UMD => Preserves type-only imports. #5", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Bar as Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -280,13 +280,13 @@ test("UMD => Preserves type-only imports. #5", "*", (_, {typescript, useProgram}
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const container = new di_1.DIContainer();
           container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.Bar });
       });
@@ -301,7 +301,7 @@ test("UMD => Preserves type-only imports. #6", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {default as Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -337,13 +337,13 @@ test("UMD => Preserves type-only imports. #6", "*", (_, {typescript, useProgram}
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const container = new di_1.DIContainer();
           container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.default });
       });
@@ -358,7 +358,7 @@ test("UMD => Preserves type-only imports. #7", "*", (_, {typescript, useProgram}
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Foo, Bar, IFoo} from "./foo";
 				console.log(Bar);
 				
@@ -396,13 +396,13 @@ test("UMD => Preserves type-only imports. #7", "*", (_, {typescript, useProgram}
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("./foo");
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const foo_1 = require("./foo");
           console.log(foo_1.Bar);
           const container = new di_1.DIContainer();
@@ -419,7 +419,7 @@ test("UMD => Preserves type-only imports with esModuleInterop and importHelpers.
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -457,13 +457,13 @@ test("UMD => Preserves type-only imports with esModuleInterop and importHelpers.
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo", "tslib"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo", "tslib"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = require("tslib").__importDefault(require("./foo"));
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const container = new di_1.DIContainer();
           container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.default });
       });
@@ -478,7 +478,7 @@ test("UMD => Preserves type-only imports with esModuleInterop. #1", "*", (_, {ty
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -516,13 +516,13 @@ test("UMD => Preserves type-only imports with esModuleInterop. #1", "*", (_, {ty
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = __importDefault(require("./foo"));
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const container = new di_1.DIContainer();
           container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.default });
       });
@@ -538,7 +538,7 @@ test("UMD => Preserves type-only imports with esModuleInterop. #2", "*", (_, {ty
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				console.log(Foo);
 				
@@ -577,13 +577,13 @@ test("UMD => Preserves type-only imports with esModuleInterop. #2", "*", (_, {ty
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = __importDefault(require("./foo"));
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const foo_1 = __importDefault(require("./foo"));
           console.log(foo_1.default);
           const container = new di_1.DIContainer();
@@ -601,7 +601,7 @@ test("UMD => Preserves type-only imports with esModuleInterop. #3", "*", (_, {ty
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import * as Foo from "./foo";
 				import {IFoo} from "./foo";
 				
@@ -640,13 +640,13 @@ test("UMD => Preserves type-only imports with esModuleInterop. #3", "*", (_, {ty
               if (v !== undefined) module.exports = v;
           }
           else if (typeof define === "function" && define.amd) {
-              define(["require", "exports", "@wessberg/di", "./foo"], factory);
+              define(["require", "exports", "@vanjaoljaca/di", "./foo"], factory);
           }
       })(function (require, exports) {
           "use strict";
           Object.defineProperty(exports, "__esModule", { value: true });
           const Foo = __importStar(require("./foo"));
-          const di_1 = require("@wessberg/di");
+          const di_1 = require("@vanjaoljaca/di");
           const container = new di_1.DIContainer();
           container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
       });

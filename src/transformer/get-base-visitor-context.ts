@@ -8,10 +8,10 @@ import {needsImportPreservationLogic} from "../util/ts-util.js";
 import type {TS} from "../type/type.js";
 
 /**
- * Shim the @wessberg/di module
+ * Shim the @vanjaoljaca/di module
  */
 const EVALUATE_MODULE_OVERRIDES = {
-	"@wessberg/di": {
+	"@vanjaoljaca/di": {
 		// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 		[DI_CONTAINER_NAME]: class {}
 	}

@@ -1,6 +1,6 @@
 {
-	"name": "@wessberg/di-compiler",
-	"version": "4.0.2",
+	"name": "@vanjaoljaca/di-compiler",
+	"version": "4.1.0",
 	"description": "A Custom Transformer for Typescript that enables compile-time Dependency Injection",
 	"scripts": {
 		"generate:sandhog": "sandhog all --yes",
@@ -11,6 +11,7 @@
 		"prettier": "prettier --write \"{src,test,documentation}/**/*.{js,ts,json,html,xml,css,md}\"",
 		"test": "node --import tsx --test \"./test/**/*.test.ts\"",
 		"prebuild": "pnpm run clean",
+		"prepare": "pnpm run build",
 		"build": "pnpm run clean && pnpm run build:esm && pnpm run build:cjs",
 		"build:esm": "tsup --entry=\"src/index.ts\" --entry=\"src/loader/esm/loader.ts\" --entry=\"src/loader/esm/hooks/index.ts\" --sourcemap --dts --format esm",
 		"build:cjs": "tsup --entry=\"src/index.ts\" --entry=\"src/loader/cjs/loader.ts\" --sourcemap --splitting --dts --format cjs",
@@ -53,6 +54,7 @@
 		"@prettier/sync": "0.5.2",
 		"@types/node": "^22.7.5",
 		"@types/semver": "^7.5.8",
+		"@vanjaoljaca/di": "github:vanjaoljaca/DI#9ea569fec78160ed959f9109b3036ce7ed9e4997",
 		"@wessberg/prettier-config": "^1.0.0",
 		"@wessberg/ts-config": "^5.0.20",
 		"@eslint/js": "9.12.0",
@@ -106,6 +108,7 @@
 		"ts-evaluator": "^2.0.0"
 	},
 	"peerDependencies": {
+		"@vanjaoljaca/di": "^3.1.0",
 		"pirates": ">=4.x",
 		"typescript": ">=3.x || >= 4.x || >= 5.x"
 	},
@@ -116,10 +119,13 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/wessberg/di-compiler.git"
+		"url": "https://github.com/vanjaoljaca/DI-compiler.git"
 	},
 	"bugs": {
-		"url": "https://github.com/wessberg/di-compiler/issues"
+		"url": "https://github.com/vanjaoljaca/DI-compiler/issues"
+	},
+	"publishConfig": {
+		"access": "public"
 	},
 	"exports": {
 		"./loader": {

@@ -1,0 +1,7 @@
+packages:
+  - "."
+
+allowBuilds:
+  "@vanjaoljaca/di@https://codeload.github.com/vanjaoljaca/DI/tar.gz/9ea569fec78160ed959f9109b3036ce7ed9e4997": true
+  esbuild@0.23.1: true
+  esbuild: set this to true or false

@@ -11,7 +11,7 @@ test("CommonJS => Preserves Type-only imports. #1", "*", (_, {typescript, usePro
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				console.log(Foo);
 				
@@ -45,7 +45,7 @@ test("CommonJS => Preserves Type-only imports. #1", "*", (_, {typescript, usePro
 			"use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = require("./foo");
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const foo_1 = require("./foo");
       console.log(foo_1.default);
       const container = new di_1.DIContainer();
@@ -61,7 +61,7 @@ test("CommonJS => Preserves type-only imports. #2", "*", (_, {typescript, usePro
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -94,7 +94,7 @@ test("CommonJS => Preserves type-only imports. #2", "*", (_, {typescript, usePro
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = require("./foo");
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const container = new di_1.DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.default });
 			`)
@@ -108,7 +108,7 @@ test("CommonJS => Preserves type-only imports. #3", "*", (_, {typescript, usePro
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -141,7 +141,7 @@ test("CommonJS => Preserves type-only imports. #3", "*", (_, {typescript, usePro
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = require("./foo");
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const container = new di_1.DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.Foo });
 			`)
@@ -155,7 +155,7 @@ test("CommonJS => Preserves type-only imports. #4", "*", (_, {typescript, usePro
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import * as Foo from "./foo";
 				import {IFoo} from "./foo";
 				
@@ -189,7 +189,7 @@ test("CommonJS => Preserves type-only imports. #4", "*", (_, {typescript, usePro
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = require("./foo");
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const container = new di_1.DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
 			`)
@@ -203,7 +203,7 @@ test("CommonJS => Preserves type-only imports. #5", "*", (_, {typescript, usePro
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Bar as Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -236,7 +236,7 @@ test("CommonJS => Preserves type-only imports. #5", "*", (_, {typescript, usePro
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = require("./foo");
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const container = new di_1.DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.Bar });
 			`)
@@ -250,7 +250,7 @@ test("CommonJS => Preserves type-only imports. #6", "*", (_, {typescript, usePro
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {default as Foo, IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -283,7 +283,7 @@ test("CommonJS => Preserves type-only imports. #6", "*", (_, {typescript, usePro
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = require("./foo");
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const container = new di_1.DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.default });
 			`)
@@ -297,7 +297,7 @@ test("CommonJS => Preserves type-only imports. #7", "*", (_, {typescript, usePro
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import {Foo, Bar, IFoo} from "./foo";
 				console.log(Bar);
 				
@@ -332,7 +332,7 @@ test("CommonJS => Preserves type-only imports. #7", "*", (_, {typescript, usePro
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = require("./foo");
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const foo_1 = require("./foo");
       console.log(foo_1.Bar);
       const container = new di_1.DIContainer();
@@ -348,7 +348,7 @@ test("CommonJS => Preserves type-only imports with esModuleInterop and importHel
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -383,7 +383,7 @@ test("CommonJS => Preserves type-only imports with esModuleInterop and importHel
       "use strict";
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = require("tslib").__importDefault(require("./foo"));
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const container = new di_1.DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.default });
 			`)
@@ -397,7 +397,7 @@ test("CommonJS => Preserves type-only imports with esModuleInterop. #1", "*", (_
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				
 				const container = new DIContainer();
@@ -432,7 +432,7 @@ test("CommonJS => Preserves type-only imports with esModuleInterop. #1", "*", (_
       ${includeEmitHelper(typescript, "__importDefault")}
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = __importDefault(require("./foo"));
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const container = new di_1.DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo.default });
 			`)
@@ -446,7 +446,7 @@ test("CommonJS => Preserves type-only imports with esModuleInterop. #2", "*", (_
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import Foo, {IFoo} from "./foo";
 				console.log(Foo);
 				
@@ -482,7 +482,7 @@ test("CommonJS => Preserves type-only imports with esModuleInterop. #2", "*", (_
       ${includeEmitHelper(typescript, "__importDefault")}
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = __importDefault(require("./foo"));
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const foo_1 = __importDefault(require("./foo"));
       console.log(foo_1.default);
       const container = new di_1.DIContainer();
@@ -498,7 +498,7 @@ test("CommonJS => preserves type-only imports with esmoduleinterop. #3", "*", (_
 				entry: true,
 				fileName: "index.ts",
 				text: `
-				import {DIContainer} from "@wessberg/di";
+				import {DIContainer} from "@vanjaoljaca/di";
 				import * as Foo from "./foo";
 				import {IFoo} from "./foo";
 				
@@ -533,7 +533,7 @@ test("CommonJS => preserves type-only imports with esmoduleinterop. #3", "*", (_
       ${includeEmitHelper(typescript, "__importStar")}
       Object.defineProperty(exports, "__esModule", { value: true });
       const Foo = __importStar(require("./foo"));
-      const di_1 = require("@wessberg/di");
+      const di_1 = require("@vanjaoljaca/di");
       const container = new di_1.DIContainer();
       container.registerSingleton(undefined, { identifier: \`IFoo\`, implementation: Foo });
 			`)

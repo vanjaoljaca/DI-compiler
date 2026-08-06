@@ -6,7 +6,7 @@ import assert from "node:assert";
 
 test("The transform API goes from TypeScript to TypeScript. #1", "*", (_, {typescript}) => {
 	const {code} = generateTransformResult(
-		`import {DIContainer} from "@wessberg/di";
+		`import {DIContainer} from "@vanjaoljaca/di";
 		import Foo, {IFoo} from "./foo";
 		
 		const container = new DIContainer();
@@ -22,7 +22,7 @@ test("The transform API goes from TypeScript to TypeScript. #1", "*", (_, {types
 	assert.deepEqual(
 		formatCode(code),
 		formatCode(`\
-		import { DIContainer } from "@wessberg/di";
+		import { DIContainer } from "@vanjaoljaca/di";
 		import Foo, { IFoo } from "./foo";
 		const container = new DIContainer();
 		container.registerSingleton<IFoo, Foo>(undefined, {
@@ -34,7 +34,7 @@ test("The transform API goes from TypeScript to TypeScript. #1", "*", (_, {types
 
 test("The transform API goes from TypeScript to TypeScript. #2", "*", (_, {typescript}) => {
 	const {code, map, filename} = generateTransformResult(
-		`import {DIContainer} from "@wessberg/di";
+		`import {DIContainer} from "@vanjaoljaca/di";
 		import Foo, {IFoo} from "./foo";
 		
 		const container = new DIContainer();
@@ -50,7 +50,7 @@ test("The transform API goes from TypeScript to TypeScript. #2", "*", (_, {types
 	assert.deepEqual(
 		formatCode(code),
 		formatCode(`\
-		import { DIContainer } from "@wessberg/di";
+		import { DIContainer } from "@vanjaoljaca/di";
 		import Foo, { IFoo } from "./foo";
 		const container = new DIContainer();
 		container.registerSingleton<IFoo, Foo>(undefined, {
@@ -67,7 +67,7 @@ test("The transform API goes from TypeScript to TypeScript. #3", "*", (_, {types
 	const {code} = generateTransformResult(
 		{
 			fileName: "file.ts",
-			text: `import {DIContainer} from "@wessberg/di";
+			text: `import {DIContainer} from "@vanjaoljaca/di";
 		import Foo, {IFoo} from "./foo";
 		
 		const container = new DIContainer();
@@ -85,14 +85,14 @@ test("The transform API goes from TypeScript to TypeScript. #3", "*", (_, {types
 	assert.deepEqual(
 		formatCode(code),
 		formatCode(`\
-		import { DIContainer } from "@wessberg/di";
+		import { DIContainer } from "@vanjaoljaca/di";
 		import Foo, { IFoo } from "./foo";
 		const container = new DIContainer();
 		container.registerSingleton<IFoo, Foo>(undefined, {
 		  identifier: \`IFoo\`,
 		  implementation: Foo,
 		});
-		//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZmlsZS50cyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImZpbGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFDLFdBQVcsRUFBQyxNQUFNLGNBQWMsQ0FBQztBQUN2QyxPQUFPLEdBQUcsRUFBRSxFQUFDLElBQUksRUFBQyxNQUFNLE9BQU8sQ0FBQztBQUVoQyxNQUFNLFNBQVMsR0FBRyxJQUFJLFdBQVcsRUFBRSxDQUFDO0FBQ3BDLFNBQVMsQ0FBQyxpQkFBaUIsQ0FBQyxJQUFJLEVBQUUsR0FBRyx5REFBRyxDQUFDIn0=`)
+		//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZmlsZS50cyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbImZpbGUudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFDLFdBQVcsRUFBQyxNQUFNLGlCQUFpQixDQUFDO0FBQzFDLE9BQU8sR0FBRyxFQUFFLEVBQUMsSUFBSSxFQUFDLE1BQU0sT0FBTyxDQUFDO0FBRWhDLE1BQU0sU0FBUyxHQUFHLElBQUksV0FBVyxFQUFFLENBQUM7QUFDcEMsU0FBUyxDQUFDLGlCQUFpQixDQUFDLElBQUksRUFBRSxHQUFHLHlEQUFHLENBQUMifQ==`)
 	);
 });
 
@@ -100,7 +100,7 @@ test("The transform API goes from TypeScript to TypeScript. #4", "*", (_, {types
 	const {code, map, filename} = generateTransformResult(
 		{
 			fileName: `C:/foo/bar/baz.ts`,
-			text: `import {DIContainer} from "@wessberg/di";
+			text: `import {DIContainer} from "@vanjaoljaca/di";
 			import Foo, {IFoo} from "./foo";
 			
 			const container = new DIContainer();
@@ -117,7 +117,7 @@ test("The transform API goes from TypeScript to TypeScript. #4", "*", (_, {types
 	assert.deepEqual(
 		formatCode(code),
 		formatCode(`\
-		import { DIContainer } from "@wessberg/di";
+		import { DIContainer } from "@vanjaoljaca/di";
 		import Foo, { IFoo } from "./foo";
 		const container = new DIContainer();
 		container.registerSingleton<IFoo, Foo>(undefined, {

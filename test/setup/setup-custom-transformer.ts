@@ -37,10 +37,10 @@ const VIRTUAL_DIST = "dist";
 const BASE_FILES = [
 	{
 		entry: false,
-		fileName: "../node_modules/@wessberg/di/package.json",
+		fileName: "../node_modules/@vanjaoljaca/di/package.json",
 		text: `
 				{
-					"name": "@wessberg/di",
+					"name": "@vanjaoljaca/di",
 					"main": "index.js"
 					"types": "index.d.ts",
 					"typings": "index.d.ts"
@@ -49,7 +49,7 @@ const BASE_FILES = [
 	},
 	{
 		entry: false,
-		fileName: "../node_modules/@wessberg/di/index.d.ts",
+		fileName: "../node_modules/@vanjaoljaca/di/index.d.ts",
 		text: `
 				export declare class DIContainer {
 				  registerSingleton<T, U extends T = T>(newExpression: unknown, options: unknown): void;

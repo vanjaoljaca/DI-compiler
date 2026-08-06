@@ -28,7 +28,7 @@
 
 <!-- SHADOW_SECTION_DESCRIPTION_LONG_END -->
 
-This library enables you to use [the DI library](https://github.com/wessberg/di) by providing several ways to transform your source code into a representation that it expects.
+This library enables you to use [the DI library](https://github.com/vanjaoljaca/DI) by providing several ways to transform your source code into a representation that it expects.
 You can use it as a [Node.js loader](#usage-as-a-nodejs-loader), as [an API](#usage-as-an-api), and even as a [`Custom Transformer`](#usage-as-a-typescript-custom-transformer) for Typescript.
 
 Integration with popular tools such as Webpack, esbuild, Rollup, or something else is easy, and this README provides several examples of ways it can be achieved.
@@ -47,6 +47,7 @@ so that it works most efficiently.
 - Low-level implementation that can be used as the foundation for other tools such as Loaders, Plugins, and others.
 - It doesn't ask you to reflect metadata or to annotate your classes with decorators. "It just works".
 - Works without a TypeScript program, so you can use it with tools like babel, esbuild, and SWC for the best possible performance.
+- Discovers named and inline constructor function types and emits automatic-factory metadata for the DI container.
 
 <!-- SHADOW_SECTION_FEATURE_IMAGE_START -->
 
@@ -77,6 +78,7 @@ so that it works most efficiently.
   - [pnpm](#pnpm)
   - [Peer Dependencies](#peer-dependencies)
 - [Usage](#usage)
+  - [Automatic factory dependencies](#automatic-factory-dependencies)
   - [Usage as an API](#usage-as-an-api)
   - [Usage as a Node.js loader](#usage-as-a-nodejs-loader)
   - [Loader SourceMaps](#loader-sourcemaps)
@@ -109,24 +111,27 @@ so that it works most efficiently.
 ### npm
 
 ```
-$ npm install @wessberg/di-compiler
+$ npm install github:vanjaoljaca/DI
+$ npm install --save-dev github:vanjaoljaca/DI-compiler typescript
 ```
 
 ### Yarn
 
 ```
-$ yarn add @wessberg/di-compiler
+$ yarn add github:vanjaoljaca/DI
+$ yarn add --dev github:vanjaoljaca/DI-compiler typescript
 ```
 
 ### pnpm
 
 ```
-$ pnpm add @wessberg/di-compiler
+$ pnpm add github:vanjaoljaca/DI
+$ pnpm add --save-dev github:vanjaoljaca/DI-compiler typescript
 ```
 
 ### Peer Dependencies
 
-`@wessberg/di-compiler` depends on `typescript`, so you need to manually install this as well.
+`@vanjaoljaca/di-compiler` requires the paired `@vanjaoljaca/di` runtime and `typescript`. Installing both GitHub repositories as shown above guarantees that the compiler and runtime share the automatic-factory metadata contract.
 
 You may also need to install `pirates` depending on the features you are going to use. Refer to the documentation for the specific cases where it may be relevant.
 
@@ -144,14 +149,38 @@ There are multiple ways you can use DI-compiler, depending on your setup:
 - [As a TypeScript Custom Transformer](#usage-as-a-typescript-custom-transformer)
 - [As a modern Node.js loader](#usage-as-a-nodejs-loader)
 
+### Automatic factory dependencies
+
+Constructor function types are automatic factory dependencies. They can be named:
+
+```typescript
+type CreateX = (key: string) => IX;
+
+class Consumer {
+	constructor(private createX: CreateX) {}
+}
+```
+
+Or written inline:
+
+```typescript
+class Consumer {
+	constructor(private createX: (key: string) => IX) {}
+}
+```
+
+The compiler records `string` as a caller-supplied parameter and `IX` as the service to construct. The [DI container](https://github.com/vanjaoljaca/DI) synthesizes the function and resolves every other dependency of the registered `IX` implementation. Application code does not register or manually construct the factory and does not receive a resolver or container.
+
+Locally declared named aliases work with or without a TypeScript `Program`; callable aliases resolved through other files require Program mode. Optional parameters, rest parameters, overloads, and duplicate parameter types throw a `TypeError` during transformation because their runtime mapping is ambiguous.
+
 ### Usage as an API
 
 The simplest possible way to use DI-Compiler is with its `transform` function:
 
 ```ts
-import {transform} from "@wessberg/di-compiler";
+import {transform} from "@vanjaoljaca/di-compiler";
 const {code} = transform(`\
-	import {DIContainer} from "@wessberg/di";
+	import {DIContainer} from "@vanjaoljaca/di";
 	const container = new DIContainer();
 	class Foo {}
 	container.registerSingleton<Foo>();
@@ -198,7 +227,7 @@ const {code, map} = transform(`...`, {
 You can pass in a cache to use as an option. This must be a data structure that conforms to that of a standard JavaScript [Map data structure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map):
 
 ```ts
-import {transform, type TransformResult} from "@wessberg/di-compiler";
+import {transform, type TransformResult} from "@vanjaoljaca/di-compiler";
 const cache = new Map<string, TransformResult>();
 
 transform(`...`, {
@@ -213,7 +242,7 @@ A very convenient way to use `DI-Compiler` is as a loader directly with Node.js.
 If your codebase is based on **native ESM**, and **if you use Node.js v.18.6.0 or newer**, pass it as a loader via the command line
 
 ```
-node --import @wessberg/di-compiler/loader
+node --import @vanjaoljaca/di-compiler/loader
 ```
 
 This is not enough on its own to teach Node.js to understand TypeScript syntax, so you'll still need to couple it with a loader like [`ts-node`](https://github.com/TypeStrong/ts-node), [`tsx`](https://github.com/esbuild-kit/tsx) or [`esm-loader`](https://github.com/esbuild-kit/esm-loader).
@@ -221,26 +250,26 @@ This is not enough on its own to teach Node.js to understand TypeScript syntax, 
 For example, here's how to use it with the native ESM loader for [`ts-node`](https://github.com/TypeStrong/ts-node):
 
 ```
-node --import @wessberg/di-compiler/loader --import ts-node/esm
+node --import @vanjaoljaca/di-compiler/loader --import ts-node/esm
 ```
 
 And, here's how to use it with [`tsx`](https://github.com/esbuild-kit/tsx):
 
 ```
-node --import @wessberg/di-compiler/loader --import tsx
+node --import @vanjaoljaca/di-compiler/loader --import tsx
 ```
 
 Finally, here's how you can use it with [`esm-loader`](https://github.com/esbuild-kit/esm-loader):
 
 ```
-node --import @wessberg/di-compiler/loader --import @esbuild-kit/esm-loader
+node --import @vanjaoljaca/di-compiler/loader --import @esbuild-kit/esm-loader
 ```
 
 Alternatively, if you don't use ESM in your project, or if you're running an older version of Node.js, DI-Compiler can be used as a loader too.
 For example, here's how to use it in combination with [`ts-node`](https://github.com/TypeStrong/ts-node) in a CommonJS project:
 
 ```
-node -r @wessberg/di-compiler/loader -r ts-node
+node -r @vanjaoljaca/di-compiler/loader -r ts-node
 ```
 
 > In all of the above configurations, for both ESM and CommonJS loaders, there is no TypeScript _Program_ context, nor is there a Type checker, so `DI-Compiler` will attempt to determinate programmatically whether or not the identifiers across your files reference instances of `DIContainer` or not, by performing partial evaluation on compile time. Please see the [Optimization](#optimization) section for details on how this process can be optimized.
@@ -297,7 +326,7 @@ There's several ways to do this, but here's a simple example:
 
 ```typescript
 import {createProgram, getDefaultCompilerOptions, createCompilerHost} from "typescript";
-import {di} from "@wessberg/di-compiler";
+import {di} from "@vanjaoljaca/di-compiler";
 
 const compilerOptions = getDefaultCompilerOptions();
 const compilerHost = createCompilerHost(compilerOptions);
@@ -314,7 +343,7 @@ program.emit(undefined, undefined, undefined, undefined, di({program}));
 [`ts-node`](https://github.com/TypeStrong/ts-node) can also be used programmatically. Here's an example of how you may combine it with DI-Compiler:
 
 ```typescript
-import {di} from "@wessberg/di-compiler";
+import {di} from "@vanjaoljaca/di-compiler";
 
 require("ts-node").register({
 	transformers: program => di({program})
@@ -331,7 +360,7 @@ Here's how you may integrate DI-Compiler with [@rollup/plugin-typescript](https:
 
 ```typescript
 import ts from "@rollup/plugin-typescript";
-import {di} from "@wessberg/di-compiler";
+import {di} from "@vanjaoljaca/di-compiler";
 
 export default {
 	input: "...",
@@ -358,7 +387,7 @@ There are two popular TypeScript loaders for Webpack that support Custom Transfo
 Here's how it can be used with [awesome-typescript-loader](https://github.com/s-panferov/awesome-typescript-loader):
 
 ```typescript
-import {di} from "@wessberg/di-compiler";
+import {di} from "@vanjaoljaca/di-compiler";
 const config = {
 	// ...
 	module: {
@@ -383,7 +412,7 @@ const config = {
 [ts-loader](https://github.com/TypeStrong/ts-loader) can be used in exactly the same way as `awesome-typescript-loader`:
 
 ```typescript
-import {di} from "@wessberg/di";
+import {di} from "@vanjaoljaca/di";
 const config = {
 	// ...
 	module: {
@@ -462,7 +491,7 @@ Or, it may simply be slow, in case a lot of Nodes have to be visited in order to
 To make it more robust and much faster simultaneously, pass in one or more identifiers as the `identifier` option that should be considered instances of DIContainer:
 
 ```ts
-import {di, transform} from "@wessberg/di-compiler";
+import {di, transform} from "@vanjaoljaca/di-compiler";
 
 // Example when using the transform function
 transform(
@@ -514,7 +543,7 @@ Then, instances of the [DIContainer](https://github.com/wessberg/di) will be dis
 For example, an expression such as:
 
 ```typescript
-import {DIContainer} from "@wessberg/di";
+import {DIContainer} from "@vanjaoljaca/di";
 import {MyInterface} from "./my-interface.js";
 import {MyImplementation} from "./my-implementation.js";
 
@@ -539,3 +568,7 @@ container.registerSingleton(undefined, {
 MIT ©
 
 <!-- SHADOW_SECTION_LICENSE_END -->
+
+## Fork note
+
+This is a fork of [`wessberg/DI-compiler`](https://github.com/wessberg/DI-compiler). It adds named and inline automatic-factory discovery, structured service/factory constructor metadata, Program-aware callable alias resolution, no-Program resolution for locally declared aliases, and transform-time errors for ambiguous factory signatures. It is designed to be used with the paired [DI runtime fork](https://github.com/vanjaoljaca/DI).
